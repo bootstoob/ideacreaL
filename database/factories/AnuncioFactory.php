@@ -17,8 +17,8 @@ class AnuncioFactory extends Factory
     public function definition()
     {
         return [
-            'usuario_id' => $this->faker->numberBetween(1, 10),
-            'categoria_id' => $this->faker->numberBetween(1, 10),
+            'usuario_id' => $this->faker->numberBetween(1, 20),
+            'categoria_id' => $this->faker->numberBetween(1, 9),
             'subcategoria_id' => $this->faker->numberBetween(1, 10),
             'nombre' => $this->faker->text(50),
             'precio' => $this->faker->numberBetween(1, 10),

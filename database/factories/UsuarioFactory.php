@@ -21,7 +21,7 @@ class UsuarioFactory extends Factory
             'password' => bcrypt('1234'),
             'nombre' => $this->faker->text(10),
             'descripcion' => $this->faker->text(100),
-            'token' => 'null',
+            'token' => '',
         ];
     }
 }

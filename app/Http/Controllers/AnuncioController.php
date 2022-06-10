@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anuncio;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
-
 
 class AnuncioController extends Controller
 {

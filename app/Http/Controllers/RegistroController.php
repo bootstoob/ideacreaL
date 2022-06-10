@@ -19,15 +19,16 @@ class RegistroController extends Controller
           'nombre' => 'required|string',
           'email' => 'required|string|email|unique:usuarios',
           'descripcion' => 'required|string',
-          'password' => 'required|string'
+          'password' => 'required|string',
+          'token'=>'',
       ]);
 
       Usuario::create([
           'nombre' => $request->nombre,
           'email' => $request->email,
           'descripcion' => $request->descripcion,
-          'password' => bcrypt($request->password)
-
+          'password' => bcrypt($request->password),
+          'token'=> '',
       ]);
 
       return response()->json([
@@ -46,19 +47,6 @@ class RegistroController extends Controller
       // $response['data'] = $request->all();
     }
   }
-
-  //en el controller
-  /*
-    try {
-        $clients = Client::all();
-        return response(['clients' => $clients], 200);
-    }catch (\Exception $e) {
-      return response()->json(['success' => false, 'msg' => 'Ha habido un error']);
-      //return response(['success' => false, 'msg' => 'Ha habido un error'],404)
-
-
-    } 
-  /*
 
       /*
       * Crea un nuevo usuario EJEMPLO

@@ -17,9 +17,10 @@ class UsuarioController extends Controller
     public function getUser(Request $request, $id)
     {
         //$user = '1';
-
+        $user = Usuario::where('id', '=', $id)->firstOrFail();
+        return $user;
+        /*
         try {
-            $user = Usuario::where('id', '=', $id)->firstOrFail();
             return response()->json(
                 [
                     'user' => $user
@@ -34,6 +35,11 @@ class UsuarioController extends Controller
                 ],
                 Response::HTTP_NOT_FOUND
             );
-        }
+        }*/
     }
+    public function getUsuarioAnun(Request $request, $id)
+    {
+        return  Usuario::with("anuncios")->find($id);
+    }
+
 }

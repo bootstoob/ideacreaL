@@ -6,8 +6,6 @@ use App\Models\Subcategoria;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-
-
 class SubcategoriaController extends Controller
 {
     //CATEGORIA

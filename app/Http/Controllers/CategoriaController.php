@@ -62,7 +62,9 @@ class CategoriaController extends Controller
         ->select('categorias.id', 'categorias.nombre_categoria', 'subcategorias.categoria_id', 'subcategorias.nombre_subcategoria','subcategorias.id as idsubcat')
         ->get()->toArray();
        return $subcategorias;*/
+    
         return  Categoria::with("subcategorias")->get();
+        
     }
     //get categoria por ID
     public function getCategoria(Request $request, $id)
@@ -110,9 +112,13 @@ class CategoriaController extends Controller
 
     public function getCategoriaconsubconanun(Request $request, $id){
         //TODO:consulta con eloquent
-            return  Subcategoria::with("anuncios")->find($id);
-            //$results = DB::select( DB::raw("SELECT * FROM some_table WHERE some_col = '$someVariable'") );
-            
+        //echo $book->author->name;
+            $subcategoria=Subcategoria::find($id);
+            $subcategoria->anuncios;
+            return $subcategoria;
+
+            //return  Subcategoria::with("anuncios")->find($id);
+
         /* try {
             //->leftjoin('subcategorias', 'categorias.id', '=', 'subcategorias.categoria_id')
             //$subcategoria = subcategoria::where('subcategorias.categoria_id', '=', $categoria_id)->leftjoin('categorias', 'categorias.id', '=', $id)->get();

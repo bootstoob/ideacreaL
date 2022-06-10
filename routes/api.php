@@ -8,28 +8,21 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\AnuncioController;
+//use App\Http\Controllers\crearAnuncioController;
 use App\misclases\response;
+
 Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::get('/acceso', [AccesoController::class, 'acceso']);
     Route::post('/registro', [App\Http\Controllers\RegistroController::class, 'registro']);
-
-    Route::get('/usuarios/{id}/', [UsuarioController::class, 'getUser']);
+    //Route::post('/cerrarsesion', [AccesoController::class, 'logout']);
+    //Route::get('/usuario/{id}/', [UsuarioController::class, 'getUser']);
 
 });
-/*
-Route::get('/administracion', ['middleware' => 'oigres@example.org', function () {
-    return "eres mayor de edad y puedes ver este contenido";
-}]);*/
 Route::get('/categorias', [CategoriaController::class, 'getCategorias']);
 Route::get('/categoriassub', [CategoriaController::class, 'getCategoriasSub']);
 Route::get('/subcategoria/{id}', [CategoriaController::class, 'getCategoriaconsubconanun']);
+Route::get('/usuario/{id}/', [UsuarioController::class, 'getUsuarioAnun']);
 Route::get('/anuncio/{id}', [AnuncioController::class, 'getAnuncio']);
-
-/* Route::group([
-    'middleware' => 'auth:api'
-], function () {
-    //Route::get('logout', 'AuthController@logout');
-    //Route::get('usuario', 'AuthController@usuario');
-});*/
+Route::post('/crearanuncio', [App\Http\Controllers\CrearAnuncioController::class, 'crearAnuncio']);

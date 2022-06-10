@@ -19,9 +19,10 @@ class Usuario extends Authenticatable
     ];
 
     //
-    public function anuncio()
+    
+    public function anuncios()
     {
-        return $this->belongsTo(Usuario::class, 'anuncios');
+        return $this->hasMany(Anuncio::class);
     }
     public function comentario()
     {

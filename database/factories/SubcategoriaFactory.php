@@ -17,7 +17,7 @@ class SubcategoriaFactory extends Factory
     public function definition()
     {
         return [
-            'categoria_id' => $this->faker->numberBetween(1, 10),
+            'categoria_id' => $this->faker->numberBetween(1, 9),
             'nombre_subcategoria' => $this->faker->text(20), 
             'descripcion' => $this->faker->text(100),
         ];

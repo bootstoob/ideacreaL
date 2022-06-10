@@ -57,17 +57,19 @@ class AccesoController extends Controller
         $token = $tokenResult->token;
         $user->token = $tokenResult->accessToken;
         $user->save();
-        
+
         if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
-        
-        $token->save();
+            //$token->expires_at = Carbon::now()->addWeeks(1);
+            $token->save();
+
         return response()->json([
             'token' => $tokenResult->accessToken,
-            'token_tipo' => 'Bearer',
+            'id' => $user->id,
+            'nombre' => $user->nombre,
+            //'id' => $user->id,
+            //'token_tipo' => 'Bearer',
             //'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
         ]);
-        //TODO: crear el token, guardarlo, asegurarse de que lo hay, si hay reemplaza. fecha... y al final devolverlo
 
     }
 
@@ -76,8 +78,7 @@ class AccesoController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
-
+        $request->user()->token->revoke();
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
@@ -90,8 +91,7 @@ class AccesoController extends Controller
     {
         return response()->json($request->user());
     }
-
-    //TODO
+    /*
     public function acceso_(Request $request)
     {
         try {
@@ -103,4 +103,5 @@ class AccesoController extends Controller
             return response()->json(['success' => false, 'msg' => 'Ha habido un error']);
         }
     }
+    */
 }
